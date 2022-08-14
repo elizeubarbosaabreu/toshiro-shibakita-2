@@ -12,10 +12,11 @@ header('Content-Type: text/html; charset=iso-8859-1');
 
 
 echo 'Versao Atual do PHP: ' . phpversion() . '<br>';
+echo 'Olá mundo!';
 
-$servername = "54.234.153.24";
+$servername = "127.0.0.1"; /* ip do servidor web. Estou usando o meu localmente */
 $username = "root";
-$password = "Senha123";
+$password = "Senha123"; /* senha do usuario root */
 $database = "meubanco";
 
 // Criar conexão
@@ -23,9 +24,9 @@ $database = "meubanco";
 
 $link = new mysqli($servername, $username, $password, $database);
 
-/* check connection */
+/* Verificação da conexão */
 if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
+    printf("Falha de conexão: %s\n", mysqli_connect_error());
     exit();
 }
 
@@ -38,9 +39,9 @@ $query = "INSERT INTO dados (AlunoID, Nome, Sobrenome, Endereco, Cidade, Host) V
 
 
 if ($link->query($query) === TRUE) {
-  echo "New record created successfully";
+  echo "Dados gravados com sucesso";
 } else {
-  echo "Error: " . $link->error;
+  echo "Erro: " . $link->error;
 }
 
 ?>
